@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <table id="table">
+    <thead>
+        <tr>
+          <th>Имя</th>
+          <th>Фамилия</th>
+          <th>Возраст</th>
+        </tr>
+    </thead>
+    <tr>
+      <td>John</td>
+      <td>Smith</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>Pete</td>
+      <td>Brown</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>Ann</td>
+      <td>Lee</td>
+      <td>5</td>
+    </tr>
+  </table>
+
+  <script>
+    let sortCol = 1;
+    let table = document.getElementById('table');
+    let elementsArr = table.querySelectorAll('tbody tr');
+
+    let dataArr = Array.from(elementsArr);
+    dataArr.sort((a, b) => {
+        a = a.querySelector(`td:nth-child(${sortCol})`);
+        b = b.querySelector(`td:nth-child(${sortCol})`);
+        if (a.textContent > b.textContent) return 1;
+        if (a.textContent == b.textContent) return 0;
+        if (a.textContent < b.textContent) return -1;
+    })
+
+    for (const el of dataArr) {
+        table.querySelector('tbody').append(el);
+    }
+  </script>
+
+</body>
+</html>
